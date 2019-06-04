@@ -84,3 +84,7 @@
 [INFO][main][2019-06-04 17:48:27][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [QyWeiXin.xml]
 [INFO][main][2019-06-04 17:49:13][org.springframework.context.support.AbstractApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b40d5f0: startup date [Tue Jun 04 17:49:13 CST 2019]; root of context hierarchy
 [INFO][main][2019-06-04 17:49:14][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [QyWeiXin.xml]
+[INFO][main][2019-06-04 22:06:29][org.springframework.context.support.AbstractApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@256216b3: startup date [Tue Jun 04 22:06:29 CST 2019]; root of context hierarchy
+[INFO][main][2019-06-04 22:06:29][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [QyWeiXin.xml]
+[INFO][main][2019-06-04 22:14:18][org.springframework.context.support.AbstractApplicationContext] - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2473b9ce: startup date [Tue Jun 04 22:14:18 CST 2019]; root of context hierarchy
+[INFO][main][2019-06-04 22:14:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [QyWeiXin.xml]
