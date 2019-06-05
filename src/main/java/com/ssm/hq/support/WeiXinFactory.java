@@ -22,7 +22,7 @@ import java.util.List;
 
 public class WeiXinFactory {
     public String getToken( HttpServletRequest request) {
-        String path=request.getServletContext().getRealPath("/WEB-INF/config.xml");
+        //String path=request.getServletContext().getRealPath("/WEB-INF/config.xml");
         String url = "";
         String secret = "";
         String corpid = "";
@@ -61,7 +61,7 @@ public class WeiXinFactory {
                 String nowtime = df.format(new Date());
                 childElements.get(0).setText(access_token);
                 childElements.get(1).setText(nowtime);
-                FileOutputStream out = new FileOutputStream(path);
+                FileOutputStream out = new FileOutputStream(resource.getFile());
                 OutputFormat format = OutputFormat.createPrettyPrint();
                 format.setEncoding("utf-8");
                 XMLWriter writer = new XMLWriter(out, format);
