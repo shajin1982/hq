@@ -33,12 +33,12 @@ public class WeiXinFactory {
         corpid=qyWeiXin.getCorpId();
         secret=qyWeiXin.getSecretValue();
         url=qyWeiXin.getGetToken();
-        ClassPathResource resource = new ClassPathResource(path);//获取configXML
+        ClassPathResource resource = new ClassPathResource("../config.xml");//获取configXML
         try {
             //1、获取解析器
             SAXReader saxReader = new SAXReader();
             //2、获得 document 文档对象
-            Document doc =saxReader.read(resource.getPath());
+            Document doc =saxReader.read(resource.getFile());
             //3、获取根元素
             Element rootElement = doc.getRootElement();
             //获取根元素名称
