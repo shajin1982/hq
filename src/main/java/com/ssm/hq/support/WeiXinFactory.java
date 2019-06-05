@@ -29,7 +29,7 @@ public class WeiXinFactory {
         String access_token = "";
         ApplicationContext ctx = new ClassPathXmlApplicationContext("QyWeiXin.xml");
         QyWeiXin qyWeiXin=ctx.getBean("qyWeiXin",QyWeiXin.class);//创建bean的引用对象
-        //获取beanXML的值
+        //获取beanXML的值1
         corpid=qyWeiXin.getCorpId();
         secret=qyWeiXin.getSecretValue();
         url=qyWeiXin.getGetToken();
