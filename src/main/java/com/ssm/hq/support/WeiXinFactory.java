@@ -1,6 +1,7 @@
 package com.ssm.hq.support;
 
 import com.ssm.hq.model.QyWeiXin;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -21,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 public class WeiXinFactory {
-    public String getToken() {
+    private String getToken() {
         String url = "";
         String secret = "";
         String corpid = "";
@@ -81,13 +82,60 @@ public class WeiXinFactory {
         QyWeiXin qyWeiXin=ctx.getBean("qyWeiXin",QyWeiXin.class);//创建bean的引用对象
         String url=qyWeiXin.getGetUserInfo();
         if (url != null&&code!=null) {
-            String access_token = this.getToken();
-            String param = "access_token=" + access_token + "&code=" + code;
+            String accessToken = this.getToken();
+            String param = "access_token=" + accessToken + "&code=" + code;
             String userJson = HttpRequest.sendGet(url, param);
             JSONObject json = JSONObject.fromObject(userJson);
             return json.getString("UserId");
         }
         else {
+            return null;
+        }
+    }
+
+    public JSONObject getUser(String userId){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("QyWeiXin.xml");
+        QyWeiXin qyWeiXin=ctx.getBean("qyWeiXin",QyWeiXin.class);//创建bean的引用对象
+        String url=qyWeiXin.getGetUser();
+        if(url!=null&&userId!=null){
+            String accessToken = this.getToken();
+            String param = "access_token=" + accessToken + "&userid=" + userId;
+            String userJson = HttpRequest.sendGet(url, param);
+            JSONObject json = JSONObject.fromObject(userJson);
+            return json;
+        }else {
+            return null;
+        }
+    }
+
+    public JSONArray getDepartment(String departmentsId) {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("QyWeiXin.xml");
+        QyWeiXin qyWeiXin=ctx.getBean("qyWeiXin",QyWeiXin.class);//创建bean的引用对象
+        String url=qyWeiXin.getGetDepartment();
+        String departmentId = departmentsId.substring(1,departmentsId.length()-1);
+        String[] departmentIdArray = departmentId.split(",");
+        //构建json数组
+        JSONArray departmentJsonArray=new JSONArray();
+        if(url!=null&&departmentIdArray!=null){
+            String accessToken = this.getToken();
+            for (String department:departmentIdArray){
+                String param = "access_token=" + accessToken + "&id=" + department;
+                String departmentJson = HttpRequest.sendGet(url, param);
+                JSONObject json = JSONObject.fromObject(departmentJson);
+                JSONObject member=new JSONObject();//创建部门json数组
+                JSONArray jsonArray=JSONArray.fromObject(json.getString("department"));//获取部门json数组
+                for(Object oj:jsonArray){//foreach 遍历部门json数组
+                    JSONObject jo=(JSONObject)oj;//强制转换object为json对象
+                    if(jo.getString("id").equals(department)){//判断是否部门id和目前要查询的部门id是否一致，一致的进行封装（因为企业微信会返回所有这个id下的部门）
+                        //封装部门为json数组
+                        member.put("id",department);
+                        member.put("name",jo.getString("name"));
+                    }
+                }
+                departmentJsonArray.add(member);//添加数组
+            }
+            return departmentJsonArray;
+        }else {
             return null;
         }
     }

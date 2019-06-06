@@ -1,17 +1,12 @@
 package com.ssm.hq.controller;
 
 
+import com.ssm.hq.model.WXUser;
 import com.ssm.hq.support.WeiXinFactory;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
+import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.support.ServletContextResource;
-
-import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +14,7 @@ import java.util.Date;
 @Controller
 public class IndexController {
     @RequestMapping("/index")
-    public String index(String code, Model model,HttpServletRequest request) throws DocumentException {
+    public String index(String code, Model model){
 //        SAXReader saxReader = new SAXReader();
 //        //2、获得 document 文档对象
 //        String path=request.getServletContext().getRealPath("/WEB-INF/config.xml");
@@ -35,9 +30,15 @@ public class IndexController {
 //        Element driverNameElt = (Element)doc.selectObject("/access_token/db-access_token_value");
 //        System.out.println(driverNameElt.getText());
         WeiXinFactory wf=new WeiXinFactory();
-        System.out.println(wf.getUid(code));
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(simpleDateFormat.format(new Date()));// new Date()为获取当前系统时间
+        String uid=wf.getUid(code);
+        WXUser wxuser=new WXUser();
+        wxuser.setUserid(uid);
+        JSONObject json=wf.getUser(uid);
+        wxuser.setName(json.getString("name"));
+        wxuser.setPosition(json.getString("position"));
+        wxuser.setDepartment(wf.getDepartment(json.getString("department")));
+        wxuser.setAvatar(json.getString("avatar"));
+        model.addAttribute("WXUser", wxuser);
         return "home";
     }
 }
