@@ -1,12 +1,16 @@
 package com.ssm.hq.controller;
 
 
+import com.mysql.jdbc.StringUtils;
 import com.ssm.hq.model.WXUser;
 import com.ssm.hq.support.WeiXinFactory;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.jms.Session;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,7 +18,7 @@ import java.util.Date;
 @Controller
 public class IndexController {
     @RequestMapping("/index")
-    public String index(String code, Model model){
+    public String index(String code, Model model, HttpSession session){
 //        SAXReader saxReader = new SAXReader();
 //        //2、获得 document 文档对象
 //        String path=request.getServletContext().getRealPath("/WEB-INF/config.xml");
@@ -29,8 +33,14 @@ public class IndexController {
 //        Document doc = reader.read(in);
 //        Element driverNameElt = (Element)doc.selectObject("/access_token/db-access_token_value");
 //        System.out.println(driverNameElt.getText());
+        String uid="";
+        uid= (String) session.getAttribute("uid");
+        if(StringUtils.isNullOrEmpty(uid)){
+            WeiXinFactory wf=new WeiXinFactory();
+            uid=wf.getUid(code);
+            session.setAttribute("uid",uid);
+        }
         WeiXinFactory wf=new WeiXinFactory();
-        String uid=wf.getUid(code);
         WXUser wxuser=new WXUser();
         wxuser.setUserid(uid);
         JSONObject json=wf.getUser(uid);

@@ -5,9 +5,10 @@
   Time: 13:36
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <html>
 <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>化轻内部平台首页 </title>
     <meta name="description" content="">
@@ -136,20 +137,23 @@
             <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
             <ul class="list-unstyled">
                 <li class="active"><a href="index.html"> <i class="icon-home"></i>首页</a></li>
-                <li><a href="tables.html"> <i class="icon-grid"></i>Tables </a></li>
-                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
-                <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
+                <li><a href="tables.html"> <i class="icon-grid"></i>泛微系统相关报表 </a></li>
+                <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>U9系统相关报表 </a></li>
+                <li><a href="forms.html"> <i class="icon-padnote"></i>信息查询 </a></li>
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
-                        class="icon-interface-windows"></i>Example dropdown </a>
+                        class="icon-interface-windows"></i>部门应用 </a>
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
-                        <li><a href="#">Page</a></li>
+                        <li><a href="#">人行中心</a></li>
+                        <li><a href="internalaudit">内审中心</a></li>
+                        <li><a href="#">物流中心</a></li>
+                        <li><a href="#">安环中心</a></li>
+                        <li><a href="#">财务中心</a></li>
+                        <li><a href="#">信息中心</a></li>
                     </ul>
                 </li>
-                <li><a href="login.html"> <i class="icon-interface-windows"></i>Login page </a></li>
+                <li><a href="/hq_war_exploded"> <i class="icon-interface-windows"></i>登录页面</a></li>
             </ul>
-            <span class="heading">Extras</span>
+            <span class="heading">后台应用</span>
             <ul class="list-unstyled">
                 <li><a href="#"> <i class="icon-flask"></i>Demo </a></li>
                 <li><a href="#"> <i class="icon-screen"></i>Demo </a></li>
@@ -188,6 +192,7 @@
                                             , mark: {//标注重要日子
                                                 '0-0-08': '工资'
                                             }
+                                            , lang: 'cn'
                                         });
                                     });
                                 </script>
@@ -195,15 +200,29 @@
                         </div>
                         <!-- Item -->
                         <div class="col-xl-6 col-sm-12">
-                            <div class="item d-flex align-items-center">
-                                <div class="icon bg-orange"><i class="icon-check"></i></div>
-                                <div class="title"><span>Open<br>Cases</span>
-                                    <div class="progress">
-                                        <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="50"
-                                             aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                            <div class="item text-center">
+                                <div class="layui-carousel" id="test2">
+                                    <div carousel-item>
+                                        <div style="background-color: #00F7DE"></div>
+                                        <div style="background-color: #5a48ea"></div>
+                                        <div style="background-color: #0062cc"></div>
+                                        <div style="background-color: #c82333"></div>
+                                        <div style="background-color: #FD482C"></div>
                                     </div>
                                 </div>
-                                <div class="number"><strong>50</strong></div>
+                                <!-- 条目中可以是任意内容，如：<img src=""> -->
+                                <script>
+                                    layui.use('carousel', function(){
+                                        var carousel = layui.carousel;
+                                        //建造实例
+                                        carousel.render({
+                                            elem: '#test2'
+                                            ,width: '100%' //设置容器宽度
+                                            ,arrow: 'always' //始终显示箭头
+                                            //,anim: 'updown' //切换动画方式
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -234,7 +253,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Line Chart            -->
+                        <!-- 饼状图-->
                         <div class="chart col-lg-6 col-12">
                             <div class="line-chart bg-white d-flex align-items-center justify-content-center has-shadow">
                                 <canvas id="lineCahrt"></canvas>
@@ -243,10 +262,15 @@
                         <div class="chart col-lg-3 col-12">
                             <!-- Bar Chart   -->
                             <div class="bar-chart has-shadow bg-white">
-                                <div class="title"><strong class="text-violet">95%</strong><br>
-                                    <small>Current Server Uptime</small>
+                                <div class="title"><strong class="text-violet">天气情况</strong><br>
+                                    <small>服务来源中国天气</small>
                                 </div>
-                                <canvas id="barChartHome"></canvas>
+                                <!-- 化轻天气 -->
+                                <div id="weather-view-he"></div>
+                                <script>
+                                    WIDGET = {ID: '7Njza2Cwmt'};
+                                </script>
+                                <script type="text/javascript" src="https://apip.weatherdt.com/view/static/js/r.js?v=1111"></script>
                             </div>
                             <!-- Numbers-->
                             <div class="statistic d-flex align-items-center bg-white has-shadow">
