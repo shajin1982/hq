@@ -12,7 +12,6 @@ import org.dom4j.io.XMLWriter;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
