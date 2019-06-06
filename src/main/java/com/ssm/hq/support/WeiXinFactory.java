@@ -21,8 +21,7 @@ import java.util.Date;
 import java.util.List;
 
 public class WeiXinFactory {
-    public String getToken( HttpServletRequest request) {
-        //String path=request.getServletContext().getRealPath("/WEB-INF/config.xml");
+    public String getToken() {
         String url = "";
         String secret = "";
         String corpid = "";
@@ -77,12 +76,12 @@ public class WeiXinFactory {
         return null;
     }
 
-    public String getUid( HttpServletRequest request,String code){
+    public String getUid(String code){
         ApplicationContext ctx = new ClassPathXmlApplicationContext("QyWeiXin.xml");
         QyWeiXin qyWeiXin=ctx.getBean("qyWeiXin",QyWeiXin.class);//创建bean的引用对象
         String url=qyWeiXin.getGetUserInfo();
         if (url != null&&code!=null) {
-            String access_token = this.getToken(request);
+            String access_token = this.getToken();
             String param = "access_token=" + access_token + "&code=" + code;
             String userJson = HttpRequest.sendGet(url, param);
             JSONObject json = JSONObject.fromObject(userJson);

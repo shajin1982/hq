@@ -35,7 +35,7 @@ public class IndexController {
 //        Element driverNameElt = (Element)doc.selectObject("/access_token/db-access_token_value");
 //        System.out.println(driverNameElt.getText());
         WeiXinFactory wf=new WeiXinFactory();
-        System.out.println(wf.getUid(request,code));
+        System.out.println(wf.getUid(code));
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println(simpleDateFormat.format(new Date()));// new Date()为获取当前系统时间
         return "home";
