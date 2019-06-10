@@ -3,12 +3,13 @@
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-    <definition name="base.definition" template="../jsp/demo.jsp">
+    <definition name="base.definition" template="/jsp/demo.jsp">
         <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/jsp/demohead.jsp" />
         <put-attribute name="body" value="" />
     </definition>
-    <definition name="CustomerDetail" extends="base.definition">
+    <definition name="demobody" extends="base.definition">
         <put-attribute name="title" value="DDDDDD"/>
-        <put-attribute name="body" value="../jsp/demobody.jsp"/>
+        <put-attribute name="body" value="/jsp/demobody.jsp"/>
     </definition>
 </tiles-definitions>

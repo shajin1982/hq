@@ -9,12 +9,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
 <table border="1" cellpadding="2" cellspacing="2" align="center">
     <tr>
-        <td height="30" colspan="2">
+        <td height="30" colspan="2"><tiles:insertAttribute name="header" />
         </td>
     </tr>
     <tr>
