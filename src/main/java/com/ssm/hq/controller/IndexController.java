@@ -49,6 +49,6 @@ public class IndexController {
         wxuser.setDepartment(wf.getDepartment(json.getString("department")));
         wxuser.setAvatar(json.getString("avatar"));
         model.addAttribute("WXUser", wxuser);
-        return "home";
+        return "demobody";
     }
 }
