@@ -1,3 +1,4 @@
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -235,10 +236,7 @@
                         <!-- Statistics -->
                         <div class="statistics col-lg-3 col-12">
                             <div class="statistic d-flex align-items-center bg-white has-shadow">
-                                <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
-                                <div class="text"><strong>234</strong><br>
-                                    <small>Applications</small>
-                                </div>
+                                <tiles:insertAttribute name="body" />
                             </div>
                             <div class="statistic d-flex align-items-center bg-white has-shadow">
                                 <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
