@@ -145,7 +145,7 @@
                         class="icon-interface-windows"></i>部门应用 </a>
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li><a href="#">人行中心</a></li>
-                        <li><a href="internalaudit">内审中心</a></li>
+                        <li><a href="internalaudit" >内审中心</a></li>
                         <li><a href="#">物流中心</a></li>
                         <li><a href="#">安环中心</a></li>
                         <li><a href="#">财务中心</a></li>

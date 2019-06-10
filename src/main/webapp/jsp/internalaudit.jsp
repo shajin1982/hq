@@ -1,3 +1,4 @@
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -185,7 +186,7 @@
                                 </div>
                                 <div class="card-body">
                                     <ul class="layui-nav">
-                                        <li class="layui-nav-item"><a href="">展期查询</a></li>
+                                        <li class="layui-nav-item"><a href="/internalaudit2">展期查询</a></li>
                                         <li class="layui-nav-item">
                                             <a href="javascript:;">授信额度</a>
                                             <dl class="layui-nav-child">
@@ -212,9 +213,6 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <iframe>
-
-                                </iframe>
                             </div>
                         </div>
                     </div>
