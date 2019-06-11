@@ -127,7 +127,7 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql-driver.version}</version>
     </dependency>
-    <!-- db: sql server -->
+    <!-- db: sql server  -->
     <dependency>
       <groupId>com.microsoft.sqlserver</groupId>
       <artifactId>mssql-jdbc</artifactId>
