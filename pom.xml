@@ -127,12 +127,11 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>${mysql-driver.version}</version>
     </dependency>
-
-    <!--sqlserver-->
+    <!-- db: sql server -->
     <dependency>
       <groupId>com.microsoft.sqlserver</groupId>
-      <artifactId>sqljdbc42</artifactId>
-      <version>6.0.8112</version>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>6.1.0.jre8</version>
     </dependency>
 
     <!-- 添加数据库连接池依赖 -->
