@@ -33,12 +33,21 @@
 <!--        <property name="password" value="${password}"/>-->
 <!--    </bean>-->
 
-    <bean id="FWOASource" class="org.apache.commons.dbcp.BasicDataSource"
+    <!-- 连接池 dbcp2 配置 -->
+    <bean id="FWOASource" class="org.apache.commons.dbcp2.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${datasource.driver}"/>
         <property name="url" value="${datasource.url}"/>
         <property name="username" value="${datasource.username}"/>
         <property name="password" value="${datasource.password}"/>
+        <!-- 连接池启动时创建的连接数量的初始值  默认值是0 -->
+        <property name="initialSize" value="3" />
+        <!-- 最小空闲值  默认值是0 -->
+        <property name="minIdle" value="3" />
+        <!-- 最大空闲值 0时无限制  默认值是8 -->
+        <property name="maxIdle" value="5" />
+        <!-- 连接池的最大值 0时无限制   默认值是8 -->
+        <property name="maxTotal" value="15" />
     </bean>
 
 <!--    <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">-->
