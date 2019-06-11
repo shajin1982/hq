@@ -186,7 +186,7 @@
                                 </div>
                                 <div class="card-body">
                                     <ul class="layui-nav">
-                                        <li class="layui-nav-item"><a href="/internalaudit2">展期查询</a></li>
+                                        <li class="layui-nav-item"><a href="internalauditPostpone">展期查询</a></li>
                                         <li class="layui-nav-item">
                                             <a href="javascript:;">授信额度</a>
                                             <dl class="layui-nav-child">
@@ -195,7 +195,7 @@
                                                 <dd><a href="">选项3</a></dd>
                                             </dl>
                                         </li>
-                                        <li class="layui-nav-item"><a href="">季度评审汇总报告</a></li>
+                                        <li class="layui-nav-item"><a href="demo">季度评审汇总报告</a></li>
                                         <li class="layui-nav-item">
                                             <a href="javascript:;">季度定期评定报告</a>
                                             <dl class="layui-nav-child">
@@ -213,6 +213,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
+                                <tiles:insertAttribute name="body" />
                             </div>
                         </div>
                     </div>

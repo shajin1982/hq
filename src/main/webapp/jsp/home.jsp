@@ -145,7 +145,7 @@
                         class="icon-interface-windows"></i>部门应用 </a>
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li><a href="#">人行中心</a></li>
-                        <li><a href="internalaudit" >内审中心</a></li>
+                        <li><a href="internalaudit">内审中心</a></li>
                         <li><a href="#">物流中心</a></li>
                         <li><a href="#">安环中心</a></li>
                         <li><a href="#">财务中心</a></li>
@@ -213,13 +213,13 @@
                                 </div>
                                 <!-- 条目中可以是任意内容，如：<img src=""> -->
                                 <script>
-                                    layui.use('carousel', function(){
+                                    layui.use('carousel', function () {
                                         var carousel = layui.carousel;
                                         //建造实例
                                         carousel.render({
                                             elem: '#test2'
-                                            ,width: '100%' //设置容器宽度
-                                            ,arrow: 'always' //始终显示箭头
+                                            , width: '100%' //设置容器宽度
+                                            , arrow: 'always' //始终显示箭头
                                             //,anim: 'updown' //切换动画方式
                                         });
                                     });
@@ -236,8 +236,9 @@
                         <!-- Statistics -->
                         <div class="statistics col-lg-3 col-12">
                             <div class="statistic d-flex align-items-center bg-white has-shadow">
-                                <tiles:insertAttribute name="body" />
+
                             </div>
+
                             <div class="statistic d-flex align-items-center bg-white has-shadow">
                                 <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
                                 <div class="text"><strong>152</strong><br>
@@ -268,7 +269,8 @@
                                 <script>
                                     WIDGET = {ID: '7Njza2Cwmt'};
                                 </script>
-                                <script type="text/javascript" src="https://apip.weatherdt.com/view/static/js/r.js?v=1111"></script>
+                                <script type="text/javascript"
+                                        src="https://apip.weatherdt.com/view/static/js/r.js?v=1111"></script>
                             </div>
                             <!-- Numbers-->
                             <div class="statistic d-flex align-items-center bg-white has-shadow">

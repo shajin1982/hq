@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- 自动扫描 -->
     <context:component-scan base-package="com.ssm.hq"/>
     <!-- 第一种方式：加载一个properties文件 -->
@@ -33,12 +33,39 @@
         <property name="password" value="${password}"/>
     </bean>
 
+<!--    <bean id="FWOASource" class="org.apache.commons.dbcp.BasicDataSource"-->
+<!--          destroy-method="close">-->
+<!--        <property name="driverClassName" value="${driverClasssOA}"/>-->
+<!--        <property name="url" value="${jdbcUrlOA}"/>-->
+<!--        <property name="username" value="${usernameOA}"/>-->
+<!--        <property name="password" value="${passwordOA}"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">-->
+<!--        <property name="defaultTargetDataSource" ref="dataSource"/>&lt;!&ndash;defaultTargetDataSource表示默认的数据源。&ndash;&gt;-->
+<!--        <property name="targetDataSources">&lt;!&ndash;targetDataSources是一个map集合，返回类型为DataSource，虽然没看，也没必要看。&ndash;&gt;-->
+<!--            <map>-->
+<!--                <entry key="dataSource" value-ref="dataSource"/>-->
+<!--                <entry key="FWOASource" value-ref="FWOASource"/>-->
+<!--            </map>-->
+<!--        </property>-->
+<!--    </bean>-->
+
     <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property  name="dataSource" ref="dataSource"/>
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
     </bean>
-
-
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ssm.hq.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

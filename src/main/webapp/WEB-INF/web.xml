@@ -48,15 +48,15 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <!--  &lt;!&ndash; spring监听器 &ndash;&gt;-->
-    <!--  <listener>-->
-    <!--    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--  </listener>-->
+      <!-- spring监听器 -->
+      <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+      </listener>
 
-    <!--  &lt;!&ndash; 防止spring内存溢出监听器，比如quartz &ndash;&gt;-->
-    <!--  <listener>-->
-    <!--    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>-->
-    <!--  </listener>-->
+      <!-- 防止spring内存溢出监听器，比如quartz -->
+      <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+      </listener>
 
     <!-- spring mvc servlet-->
     <servlet>

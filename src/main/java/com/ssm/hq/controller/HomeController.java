@@ -17,13 +17,8 @@ public class HomeController {
         uid= (String) session.getAttribute("uid");
         WeiXinFactory wf=new WeiXinFactory();
         WXUser wxuser=new WXUser();
-        wxuser.setUserid(uid);
-        JSONObject json=wf.getUser(uid);
-        wxuser.setName(json.getString("name"));
-        wxuser.setPosition(json.getString("position"));
-        wxuser.setDepartment(wf.getDepartment(json.getString("department")));
-        wxuser.setAvatar(json.getString("avatar"));
+        wxuser=wf.getWxuser(uid);
         model.addAttribute("WXUser", wxuser);
-        return "internalaudit";
+        return "internalauditHmoe";
     }
 }

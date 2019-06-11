@@ -11,12 +11,20 @@
         <put-attribute name="title" value="DDDDDD"/>
         <put-attribute name="body" value="/jsp/demobody.jsp"/>
     </definition>
-<!--    <definition name="base.definition2" template="/jsp/internalaudit.jsp">-->
-<!--        <put-attribute name="title" value="" />-->
-<!--        <put-attribute name="body" value="" />-->
-<!--    </definition>-->
-<!--    <definition name="demobody2" extends="base.definition2">-->
-<!--        <put-attribute name="title" value="DDDDDD"/>-->
-<!--        <put-attribute name="body" value="/jsp/demobody.jsp"/>-->
-<!--    </definition>-->
+    <definition name="base.internalaudit" template="/jsp/internalaudit.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="body" value="" />
+    </definition>
+    <definition name="internalauditHmoe" extends="base.internalaudit">
+        <put-attribute name="title" value="内审中心"/>
+        <put-attribute name="body" value="/jsp/internalaudit_home.jsp"/>
+    </definition>
+    <definition name="internalauditPostpone" extends="base.internalaudit">
+        <put-attribute name="title" value="内审中心-展期查询"/>
+        <put-attribute name="body" value="/jsp/internalaudit_postpone.jsp"/>
+    </definition>
+    <definition name="demo" extends="base.internalaudit">
+        <put-attribute name="title" value="内审中心-展期查询"/>
+        <put-attribute name="body" value="/jsp/demohead.jsp"/>
+    </definition>
 </tiles-definitions>

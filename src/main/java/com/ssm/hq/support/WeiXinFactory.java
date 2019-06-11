@@ -1,6 +1,7 @@
 package com.ssm.hq.support;
 
 import com.ssm.hq.model.QyWeiXin;
+import com.ssm.hq.model.WXUser;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.dom4j.Document;
@@ -136,5 +137,15 @@ public class WeiXinFactory {
         }else {
             return null;
         }
+    }
+    public WXUser getWxuser(String uid){
+        WXUser wxuser=new WXUser();
+        wxuser.setUserid(uid);
+        JSONObject json=this.getUser(uid);
+        wxuser.setName(json.getString("name"));
+        wxuser.setPosition(json.getString("position"));
+        wxuser.setDepartment(this.getDepartment(json.getString("department")));
+        wxuser.setAvatar(json.getString("avatar"));
+        return wxuser;
     }
 }
