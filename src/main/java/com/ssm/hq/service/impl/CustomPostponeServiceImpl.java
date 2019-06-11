@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class CustomPostponeServiceImpl implements CustomPostponeService {
-    @Autowired
+    @Resource
     private CustomPostponeDao customPostponeDao;
     @Override
     public List<CustomPostpone> getAllCustomPostpone() {

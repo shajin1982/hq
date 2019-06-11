@@ -27,4 +27,8 @@
         <put-attribute name="title" value="内审中心-展期查询"/>
         <put-attribute name="body" value="/jsp/demohead.jsp"/>
     </definition>
+    <definition name="demo2" extends="base.internalaudit">
+        <put-attribute name="title" value="内审中心-展期查询"/>
+        <put-attribute name="body" value="/jsp/demobody.jsp"/>
+    </definition>
 </tiles-definitions>

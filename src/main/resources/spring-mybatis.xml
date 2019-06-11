@@ -25,21 +25,21 @@
    -->
 
     <!-- 配置数据源 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-          destroy-method="close">
-        <property name="driverClassName" value="${driverClasss}"/>
-        <property name="url" value="${jdbcUrl}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-    </bean>
-
-<!--    <bean id="FWOASource" class="org.apache.commons.dbcp.BasicDataSource"-->
+<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"-->
 <!--          destroy-method="close">-->
-<!--        <property name="driverClassName" value="${driverClasssOA}"/>-->
-<!--        <property name="url" value="${jdbcUrlOA}"/>-->
-<!--        <property name="username" value="${usernameOA}"/>-->
-<!--        <property name="password" value="${passwordOA}"/>-->
+<!--        <property name="driverClassName" value="${driverClasss}"/>-->
+<!--        <property name="url" value="${jdbcUrl}"/>-->
+<!--        <property name="username" value="${username}"/>-->
+<!--        <property name="password" value="${password}"/>-->
 <!--    </bean>-->
+
+    <bean id="FWOASource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${datasource.driver}"/>
+        <property name="url" value="${datasource.url}"/>
+        <property name="username" value="${datasource.username}"/>
+        <property name="password" value="${datasource.password}"/>
+    </bean>
 
 <!--    <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">-->
 <!--        <property name="defaultTargetDataSource" ref="dataSource"/>&lt;!&ndash;defaultTargetDataSource表示默认的数据源。&ndash;&gt;-->
@@ -53,7 +53,7 @@
 
     <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property  name="dataSource" ref="dataSource"/>
+        <property  name="dataSource" ref="FWOASource"/>
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
     </bean>
@@ -64,7 +64,7 @@
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="FWOASource"/>
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
