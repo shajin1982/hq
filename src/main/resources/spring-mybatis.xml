@@ -34,7 +34,7 @@
 <!--    </bean>-->
 
     <!-- 连接池 dbcp2 配置 -->
-    <bean id="FWOASource" class="org.apache.commons.dbcp2.BasicDataSource"
+    <bean id="FWOASource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${datasource.driver}"/>
         <property name="url" value="${datasource.url}"/>
