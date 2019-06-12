@@ -8,10 +8,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<div>
-    <c:if test="${!empty userList}">
-        <c:forEach var="user" items="${userList}">
-            姓名：${user.userName} &nbsp;&nbsp;手机号：${user.userPhone} &nbsp;&nbsp;邮箱：${user.userEmail} &nbsp;&nbsp;密码：${user.userPwd} &nbsp;&nbsp;<br>
-        </c:forEach>
-    </c:if>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <c:if test="${!empty userList}">
+                <c:forEach var="user" items="${userList}">
+                    姓名：${user.userName} &nbsp;&nbsp;手机号：${user.userPhone} &nbsp;&nbsp;邮箱：${user.userEmail} &nbsp;&nbsp;密码：${user.userPwd} &nbsp;&nbsp;<br>
+                </c:forEach>
+            </c:if>
+        </div>
+    </div>
 </div>

@@ -617,7 +617,7 @@
                     </div>
                 </div>
             </section>
-            <!-- Updates Section                                                -->
+            <!-- Updates Section-->
             <section class="updates no-padding-top">
                 <div class="container-fluid">
                     <div class="row">

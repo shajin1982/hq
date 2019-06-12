@@ -44,6 +44,6 @@ public class IndexController {
         WXUser wxuser=new WXUser();
         wxuser=wf.getWxuser(uid);
         model.addAttribute("WXUser", wxuser);
-        return "home";
+        return "homepage";
     }
 }

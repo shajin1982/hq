@@ -24,30 +24,33 @@ public class InternalauditController {
     @Resource
     private UserService userService;
 
-    @RequestMapping("/internalauditPostpone")
-    public String internalauditPostpone(Model model, HttpSession session){
-        String uid="";
-        uid= (String) session.getAttribute("uid");
-        WeiXinFactory wf=new WeiXinFactory();
-        WXUser wxuser=new WXUser();
-        wxuser=wf.getWxuser(uid);
-        model.addAttribute("WXUser", wxuser);
-        return "internalauditPostpone";
-    }
-
-    @RequestMapping("/demo")
-    public String internalauditdemo(Model model){
-        MultipleDataSource.setDataSourceKey("dataSource");
-        List<User> userList = userService.getAllUser();
-        model.addAttribute("userList",userList);
-        return "demo";
-    }
-
-    @RequestMapping("/demo2")
+//    @RequestMapping("/demohead")
+//    public String internalauditPostpone(Model model, HttpSession session){
+//        String uid="";
+//        uid= (String) session.getAttribute("uid");
+//        WeiXinFactory wf=new WeiXinFactory();
+//        WXUser wxuser=new WXUser();
+//        wxuser=wf.getWxuser(uid);
+//        model.addAttribute("WXUser", wxuser);
+//        MultipleDataSource.setDataSourceKey("dataSource");
+//        List<User> userList = userService.getAllUser();
+//        model.addAttribute("userList",userList);
+//        return "demohead";
+//    }
+//
+//    @RequestMapping("/demo")
+//    public String internalauditdemo(Model model){
+//        MultipleDataSource.setDataSourceKey("dataSource");
+//        List<User> userList = userService.getAllUser();
+//        model.addAttribute("userList",userList);
+//        return "demo";
+//    }
+//
+    @RequestMapping("/demobody")
     public String internalauditdemo2(Model model){
         MultipleDataSource.setDataSourceKey("FWOASource");
         List<CustomPostpone> customPostpones=customPostponeService.getAllCustomPostpone();
         model.addAttribute("customPostpones",customPostpones);
-        return "demo2";
+        return "demobody";
     }
 }

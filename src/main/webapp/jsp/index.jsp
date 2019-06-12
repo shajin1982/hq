@@ -3,6 +3,8 @@
 <head>
     <title>首页</title>
     <link href="css/indexstyles.css" rel="stylesheet">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="img/favicon20190612.ico">
     <script src="http://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js"></script>
 </head>
 <body>
