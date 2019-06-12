@@ -25,29 +25,19 @@
    -->
 
     <!-- 配置数据源 -->
-<!--    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"-->
-<!--          destroy-method="close">-->
-<!--        <property name="driverClassName" value="${driverClasss}"/>-->
-<!--        <property name="url" value="${jdbcUrl}"/>-->
-<!--        <property name="username" value="${username}"/>-->
-<!--        <property name="password" value="${password}"/>-->
-<!--    </bean>-->
-
-    <!-- 连接池 dbcp2 配置 -->
-    <bean id="FWOASource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
+        <property name="driverClassName" value="${driverClasss}"/>
+        <property name="url" value="${jdbcUrl}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <bean id="FWOASource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${datasource.driver}"/>
         <property name="url" value="${datasource.url}"/>
         <property name="username" value="${datasource.username}"/>
         <property name="password" value="${datasource.password}"/>
-        <!-- 连接池启动时创建的连接数量的初始值  默认值是0 -->
-        <property name="initialSize" value="3" />
-        <!-- 最小空闲值  默认值是0 -->
-        <property name="minIdle" value="3" />
-        <!-- 最大空闲值 0时无限制  默认值是8 -->
-        <property name="maxIdle" value="5" />
-        <!-- 连接池的最大值 0时无限制   默认值是8 -->
-        <property name="maxTotal" value="15" />
     </bean>
 
 <!--    <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">-->
@@ -62,7 +52,7 @@
 
     <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property  name="dataSource" ref="FWOASource"/>
+        <property  name="dataSource" ref="dataSource"/>
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
     </bean>
@@ -73,7 +63,7 @@
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="FWOASource"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>

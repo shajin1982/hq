@@ -195,7 +195,7 @@
                                                 <dd><a href="">选项3</a></dd>
                                             </dl>
                                         </li>
-                                        <li class="layui-nav-item"><a href="demo2">季度评审汇总报告</a></li>
+                                        <li class="layui-nav-item"><a href="demo">季度评审汇总报告</a></li>
                                         <li class="layui-nav-item">
                                             <a href="javascript:;">季度定期评定报告</a>
                                             <dl class="layui-nav-child">
