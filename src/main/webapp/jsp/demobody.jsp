@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,5 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
-    11111111
+    <c:if test="${!empty customPostpones}">
+        <c:forEach var="user" items="${customPostpones}">
+            姓名：${user.customName} &nbsp;&nbsp;手机号：${user.postponeCause} &nbsp;&nbsp;邮箱：${user.postponeTime} &nbsp;&nbsp;<br>
+        </c:forEach>
+    </c:if>
 </div>

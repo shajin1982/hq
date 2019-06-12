@@ -11,21 +11,21 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import java.io.IOException;
+import java.sql.*;
 import java.text.ParseException;
 import java.util.List;
 
 public class TestOne {
 
-    private UserService userService;
-    @Before
-    public void getBefore(){
-        String xmlPath = "target/hq/WEB-INF/classes/spring-mybatis.xml";
-        ApplicationContext ac = new FileSystemXmlApplicationContext(xmlPath);
-        userService = ac.getBean(UserServiceImpl.class);
-    }
-
     @Test
-    public void test3() throws IOException, JDOMException, DocumentException, ParseException {
-        List<User> userList = userService.getAllUser();
+    public void test3() throws IOException, JDOMException, DocumentException, ParseException, ClassNotFoundException, SQLException {
+        Class.forName("net.sourceforge.jtds.jdbc.Driver");
+        Connection con;
+        con = DriverManager.getConnection("jdbc:jtds:sqlserver://192.168.1.235:1433;DatabaseName=ecology_demo","sa", "abc123");
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("select kh as customName,zqyy as postponeCause,zqsqsj as postponeTime from formtable_main_20");
+        while (rs.next()){
+            System.out.print(rs.getString("customName"));
+        }
     }
 }

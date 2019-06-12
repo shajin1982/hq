@@ -18,8 +18,9 @@ import java.util.List;
 @Controller
 public class InternalauditController {
     @Resource
-    private UserService userService;
     private CustomPostponeService customPostponeService;
+    @Resource
+    private UserService userService;
 
     @RequestMapping("/internalauditPostpone")
     public String internalauditPostpone(Model model, HttpSession session){
@@ -42,6 +43,7 @@ public class InternalauditController {
     @RequestMapping("/demo2")
     public String internalauditdemo2(Model model){
         List<CustomPostpone> customPostpones=customPostponeService.getAllCustomPostpone();
+        model.addAttribute("customPostpones",customPostpones);
         return "demo2";
     }
 }
