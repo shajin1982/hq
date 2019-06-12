@@ -46,11 +46,11 @@ public class InternalauditController {
 //        return "demo";
 //    }
 //
-    @RequestMapping("/demobody")
-    public String internalauditdemo2(Model model){
-        MultipleDataSource.setDataSourceKey("FWOASource");
-        List<CustomPostpone> customPostpones=customPostponeService.getAllCustomPostpone();
-        model.addAttribute("customPostpones",customPostpones);
-        return "demobody";
-    }
+//    @RequestMapping("/demobody")
+//    public String internalauditdemo2(Model model){
+//        MultipleDataSource.setDataSourceKey("FWOASource");
+//        List<CustomPostpone> customPostpones=customPostponeService.getAllCustomPostpone();
+//        model.addAttribute("customPostpones",customPostpones);
+//        return "demobody";
+//    }
 }

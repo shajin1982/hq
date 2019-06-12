@@ -15,7 +15,7 @@
             </div>
             <div class="card-body">
                 <ul class="layui-nav">
-                    <li class="layui-nav-item layui-this"><a href="">展期查询</a></li>
+                    <li class="layui-nav-item layui-this"><a href="renewal">展期查询</a></li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">授信额度</a>
                         <dl class="layui-nav-child">
@@ -24,14 +24,26 @@
                             <dd><a href="">选项3</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item"><a href="demobody">季度评审汇总报告</a></li>
+                    <li class="layui-nav-item"><a href="">季度评审汇总报告</a></li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">季度定期评定报告</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="">移动模块</a></dd>
-                            <dd><a href="">后台模版</a></dd>
-                            <dd class="layui-this"><a href="">选中项</a></dd>
-                            <dd><a href="">电商平台</a></dd>
+                            <dd><a href="">化学品供应商</a></dd>
+                            <dd><a href="">客户关系</a></dd>
+                            <dd><a href="">律师事务所服务质量</a></dd>
+                            <dd><a href="">企业管理服务供应商</a></dd>
+                            <dd><a href="">人力资源服务供应商</a></dd>
+                            <dd><a href="">保险服务供应商</a></dd>
+                            <dd><a href="">车运服务供应商</a></dd>
+                            <dd><a href="">船运服务供应商</a></dd>
+                            <dd><a href="">货代服务供应商</a></dd>
+                            <dd><a href="">会计事务所服务供应商</a></dd>
+                            <dd><a href="">商检服务供应商</a></dd>
+                            <dd><a href="">仓储服务供应商</a></dd>
+                            <dd><a href="">宾馆服务供应商</a></dd>
+                            <dd><a href="">IT服务供应商</a></dd>
+                            <dd><hr class="layui-bg-green" style="margin: 2px"></dd>
+                            <dd><a href="">我的评定报告</a></dd>
                         </dl>
                     </li>
                 </ul>

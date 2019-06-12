@@ -21,15 +21,4 @@ public class HomeController {
         model.addAttribute("WXUser", wxuser);
         return "renewal";
     }
-//    @RequestMapping("/audithome")
-//    public String internalaudit(Model model, HttpSession session){
-//        String uid="";
-//        uid= (String) session.getAttribute("uid");
-//        WeiXinFactory wf=new WeiXinFactory();
-//        WXUser wxuser=new WXUser();
-//        wxuser=wf.getWxuser(uid);
-//        model.addAttribute("WXUser", wxuser);
-//        return "audithome";
-//    }
-
 }
