@@ -25,6 +25,7 @@
    -->
 
     <!-- 配置数据源 -->
+    <!-- mysql数据源 -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${driverClasss}"/>
@@ -32,14 +33,14 @@
         <property name="username" value="${username}"/>
         <property name="password" value="${password}"/>
     </bean>
-
+    <!-- sqlserver数据源 -->
     <bean id="FWOASource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${datasource.driver}"/>
         <property name="url" value="${datasource.url}"/>
         <property name="username" value="${datasource.username}"/>
         <property name="password" value="${datasource.password}"/>
     </bean>
-
+    <!-- 数据源集合 -->
     <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">
         <property name="defaultTargetDataSource" ref="dataSource"/><!--defaultTargetDataSource表示默认的数据源。-->
         <property name="targetDataSources"><!--targetDataSources是一个map集合，返回类型为DataSource，虽然没看，也没必要看。-->
@@ -52,7 +53,7 @@
 
     <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property  name="dataSource" ref="multipleDataSource"/>
+        <property  name="dataSource" ref="multipleDataSource"/><!--指向multipleDataSource数据集合-->
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
     </bean>
@@ -63,7 +64,7 @@
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="multipleDataSource"/>
+        <property name="dataSource" ref="multipleDataSource"/><!--指向multipleDataSource数据集合-->
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>

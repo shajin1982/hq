@@ -20,6 +20,7 @@ import java.util.List;
 public class InternalauditController {
     @Resource
     private CustomPostponeService customPostponeService;
+
     @Resource
     private UserService userService;
 
@@ -36,6 +37,7 @@ public class InternalauditController {
 
     @RequestMapping("/demo")
     public String internalauditdemo(Model model){
+        MultipleDataSource.setDataSourceKey("dataSource");
         List<User> userList = userService.getAllUser();
         model.addAttribute("userList",userList);
         return "demo";
@@ -43,7 +45,7 @@ public class InternalauditController {
 
     @RequestMapping("/demo2")
     public String internalauditdemo2(Model model){
-        //MultipleDataSource.setDataSourceKey("FWOASource");
+        MultipleDataSource.setDataSourceKey("FWOASource");
         List<CustomPostpone> customPostpones=customPostponeService.getAllCustomPostpone();
         model.addAttribute("customPostpones",customPostpones);
         return "demo2";
