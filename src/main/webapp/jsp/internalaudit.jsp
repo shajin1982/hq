@@ -190,8 +190,8 @@
                                         <li class="layui-nav-item">
                                             <a href="javascript:;">授信额度</a>
                                             <dl class="layui-nav-child">
-                                                <dd><a href="">选项1</a></dd>
-                                                <dd><a href="">选项2</a></dd>
+                                                <dd><a href="demo">选项1</a></dd>
+                                                <dd><a href="demo2">选项2</a></dd>
                                                 <dd><a href="">选项3</a></dd>
                                             </dl>
                                         </li>

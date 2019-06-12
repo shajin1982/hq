@@ -5,6 +5,7 @@ import com.ssm.hq.model.User;
 import com.ssm.hq.model.WXUser;
 import com.ssm.hq.service.CustomPostponeService;
 import com.ssm.hq.service.UserService;
+import com.ssm.hq.support.MultipleDataSource;
 import com.ssm.hq.support.WeiXinFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,6 +43,7 @@ public class InternalauditController {
 
     @RequestMapping("/demo2")
     public String internalauditdemo2(Model model){
+        //MultipleDataSource.setDataSourceKey("FWOASource");
         List<CustomPostpone> customPostpones=customPostponeService.getAllCustomPostpone();
         model.addAttribute("customPostpones",customPostpones);
         return "demo2";

@@ -40,19 +40,19 @@
         <property name="password" value="${datasource.password}"/>
     </bean>
 
-<!--    <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">-->
-<!--        <property name="defaultTargetDataSource" ref="dataSource"/>&lt;!&ndash;defaultTargetDataSource表示默认的数据源。&ndash;&gt;-->
-<!--        <property name="targetDataSources">&lt;!&ndash;targetDataSources是一个map集合，返回类型为DataSource，虽然没看，也没必要看。&ndash;&gt;-->
-<!--            <map>-->
-<!--                <entry key="dataSource" value-ref="dataSource"/>-->
-<!--                <entry key="FWOASource" value-ref="FWOASource"/>-->
-<!--            </map>-->
-<!--        </property>-->
-<!--    </bean>-->
+    <bean id="multipleDataSource" class="com.ssm.hq.support.MultipleDataSource">
+        <property name="defaultTargetDataSource" ref="dataSource"/><!--defaultTargetDataSource表示默认的数据源。-->
+        <property name="targetDataSources"><!--targetDataSources是一个map集合，返回类型为DataSource，虽然没看，也没必要看。-->
+            <map>
+                <entry key="dataSource" value-ref="dataSource"/>
+                <entry key="FWOASource" value-ref="FWOASource"/>
+            </map>
+        </property>
+    </bean>
 
     <!-- mybatis和spring完美整合，不需要mybatis的配置映射文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property  name="dataSource" ref="FWOASource"/>
+        <property  name="dataSource" ref="multipleDataSource"/>
         <!-- 自动扫描mapping.xml文件 -->
         <property name="mapperLocations" value="classpath:mapping/*.xml"/>
     </bean>
@@ -63,7 +63,7 @@
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="FWOASource"/>
+        <property name="dataSource" ref="multipleDataSource"/>
     </bean>
     <!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
