@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface CustomPostponeDao {
     List<CustomPostpone> selectAllCustomPostpone();
+    List<CustomPostpone> selectAllCustomPostponeName();
+    List<CustomPostpone> selectCustomPostponeByLikeName(String customName);
 }

@@ -5,7 +5,6 @@
     <link href="css/indexstyles.css" rel="stylesheet">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon20190612.ico">
-    <script src="http://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js"></script>
 </head>
 <body>
 <div class="jq22-container" style="padding-top:100px">
@@ -19,10 +18,11 @@
                     <div class="group" id="wx_reg">
                     </div>
                 </div>
+                <form method="post" action="index">
                 <div class="sign-up-htm">
                     <div class="group">
                         <label for="user" class="label">用户名</label>
-                        <input id="user" type="text" class="input">
+                        <input id="user" name="user" type="text" class="input">
                     </div>
                     <div class="group">
                         <label for="pass" class="label">密码</label>
@@ -33,17 +33,23 @@
                         <label for="check"><span class="icon"></span> 记住账号密码</label>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button" value="登录">
+                        <input type="submit" class="button" value="登录"/>
+
                     </div>
                     <div class="hr"></div>
                     <div class="foot-lnk">
                         <a href="#">忘记密码</a>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+<!-- JavaScript files-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- 企业微信登录二维码-->
+<script src="http://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js"></script>
 <script>
     //企业微信二维码构造
     window.WwLogin({

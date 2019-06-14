@@ -30,7 +30,6 @@
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/favicon20190612.ico">
     <!-- layui-->
-    <script src="vendor/layui/layui.js"></script>
     <link rel="stylesheet" href="vendor/layui/css/layui.css">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -70,25 +69,56 @@
 </body>
 <!-- JavaScript files-->
 <script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/popper.js/umd/popper.min.js"></script>
+<!--bootstrap-->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/jquery.cookie/jquery.cookie.js"></script>
-<script src="vendor/chart.js/Chart.min.js"></script>
-<script src="vendor/jquery-validation/jquery.validate.min.js"></script>
-<script src="js/charts-home.js"></script>
-<!-- Main File-->
-<script src="js/front.js"></script>
+<!-- layui-->
+<script src="vendor/layui/layui.js"></script>
 <script>
     $(function () {
-        $('#exampledropdownDropdown').collapse('show')
+        $('#exampledropdownDropdown').collapse('show');
     });
-    layui.use('element', function () {
+    //启动layui
+    layui.use(['form','laydate','element',], function () {
+        var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+        //但是，如果你的HTML是动态生成的，自动渲染就会失效
+        //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
+        //自定义验证规则
+        form.verify({
+            title: function(value){
+                if(value.length < 1){
+                    return '公司名称必填';
+                }
+            }
+            ,pass: [
+                /^[\S]{6,12}$/
+                ,'密码必须6到12位，且不能出现空格'
+            ]
+            ,content: function(value){
+                layedit.sync(editIndex);
+            }
+        });
+        form.render();
+        //日期选择控件
+        var laydate = layui.laydate;
+        //日期范围
+        laydate.render({
+            elem: '#date'
+            , range: true
+        });
+        //导航控件
         var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
         //监听导航点击
         element.on('nav(demo)', function (elem) {
             //console.log(elem)
             layer.msg(elem.text());
         });
+        //监听提交
+        // form.on('submit(demo1)', function(data){
+        //     layer.alert(JSON.stringify(data.field), {
+        //         title: '最终的提交信息'
+        //     });
+        //     return false;
+        // });
     });
 </script>
 </html>

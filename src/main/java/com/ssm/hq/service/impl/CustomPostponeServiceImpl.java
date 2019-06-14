@@ -20,4 +20,14 @@ public class CustomPostponeServiceImpl implements CustomPostponeService {
     public List<CustomPostpone> getAllCustomPostpone() {
         return customPostponeDao.selectAllCustomPostpone();
     }
+
+    @Override
+    public List<CustomPostpone> getAllCustomPostponeName() {
+        return customPostponeDao.selectAllCustomPostponeName();
+    }
+
+    @Override
+    public List<CustomPostpone> getCustomPostponeByLikeName(String customName) {
+        return customPostponeDao.selectCustomPostponeByLikeName(customName);
+    }
 }
